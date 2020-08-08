@@ -47,8 +47,19 @@ def ThreadFunc():
         #    print("No frame")
         handles = driver.window_handles
         print(handles)
-        lElement = driver.find_element_by_xpath("//div[@role = 'dialog']//button[@class = '_1mf7 _4r1q _4jy0 _4jy3 _4jy1 _51sy selected _42ft _42fr']")
+        lElement = driver.find_element_by_xpath("//a[@id = 'FBscriptCClose']")
         lElement.click()
+
+        driver.implicitly_wait(60)
+
+        im = pyautogui.locateOnScreen(r'C:/Users/91702/Documents/Work/Fiverr/SourceControl/ChromePlugin/ChromePluginBot/ExtensionIcon.PNG')
+        pyautogui.click(x=im[0],y=im[1],clicks=1,interval=0.0,button="left")
+
+        driver.implicitly_wait(30)
+
+        lElementStart = driver.find_element_by_xpath("//div[@class = 'fbe-actions fbe-button1']")
+        lElementStart.click()
+        numberRetries -= 1
         attr = driver.switch_to.active_element
         print(attr)
         try:
